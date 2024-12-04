@@ -65,3 +65,9 @@ resetCartButton.FlatAppearance.BorderSize <- 0
 
 let totalLabel = new Label(Text = "Total: $0.00", Top = 300, Left = 900, Width = 200, Height = 30, Font = new Font("Arial", 10.0f))
 totalLabel.ForeColor <- Color.DarkGreen
+
+browseButton.Click.Add(fun _ ->
+    productListBox.Items.Clear()
+    productCatalog |> List.iter (fun product -> 
+        productListBox.Items.Add(sprintf "%s - $%.2f" product.Name product.Price) |> ignore)
+)
