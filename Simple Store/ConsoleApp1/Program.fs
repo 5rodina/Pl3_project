@@ -71,3 +71,10 @@ browseButton.Click.Add(fun _ ->
     productCatalog |> List.iter (fun product -> 
         productListBox.Items.Add(sprintf "%s - $%.2f" product.Name product.Price) |> ignore)
 )
+
+let mutable cart = []
+
+// Function to update the total cost label
+let updateTotal () =
+    let total = cart |> List.sumBy (fun product -> product.Price)
+    totalLabel.Text <- sprintf "Total: $%.2f" total
