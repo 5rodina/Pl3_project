@@ -78,3 +78,17 @@ let mutable cart = []
 let updateTotal () =
     let total = cart |> List.sumBy (fun product -> product.Price)
     totalLabel.Text <- sprintf "Total: $%.2f" total
+
+
+addToCartButton.Click.Add(fun _ ->
+    let selectedProduct = productListBox.SelectedItem
+    if selectedProduct <> null then
+        let productName = selectedProduct.ToString().Split([| '-' |]).[0].Trim()
+        let productOpt = List.tryFind (fun product -> product.Name = productName) productCatalog
+        match productOpt with
+        | Some product ->
+            cart <- product :: cart
+            cartListBox.Items.Add(product.Name)
+            updateTotal()
+        | None -> ()
+)
