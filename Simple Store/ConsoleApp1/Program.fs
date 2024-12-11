@@ -63,6 +63,28 @@ resetCartButton.ForeColor <- Color.White
 resetCartButton.FlatStyle <- FlatStyle.Flat
 resetCartButton.FlatAppearance.BorderSize <- 0
 
+
+form.Controls.Add(titleLabel)
+form.Controls.Add(productListBox)
+form.Controls.Add(cartListBox)
+form.Controls.Add(browseButton)
+form.Controls.Add(addToCartButton)
+form.Controls.Add(removeFromCartButton)
+form.Controls.Add(checkoutButton)
+form.Controls.Add(resetCartButton)
+form.Controls.Add(totalLabel)
+
+// Gradient Background for the Form
+let gradientBrush = new Drawing2D.LinearGradientBrush(
+    form.ClientRectangle, 
+    Color.LightSkyBlue, 
+    Color.White, 
+    Drawing2D.LinearGradientMode.Vertical
+)
+
+form.Paint.Add(fun e -> 
+    e.Graphics.FillRectangle(gradientBrush, form.ClientRectangle)
+)
 let totalLabel = new Label(Text = "Total: $0.00", Top = 300, Left = 900, Width = 200, Height = 30, Font = new Font("Arial", 10.0f))
 totalLabel.ForeColor <- Color.DarkGreen
 
