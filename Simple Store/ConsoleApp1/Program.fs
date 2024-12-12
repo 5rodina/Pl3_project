@@ -123,3 +123,11 @@ removeFromCartButton.Click.Add(fun _ ->
         cartListBox.Items.Remove(productName)
         updateTotal()
 )
+
+checkoutButton.Click.Add(fun _ ->
+    if List.isEmpty cart then
+        MessageBox.Show("Your cart is empty.", "Checkout")|> ignore
+    else
+        let total = cart |> List.sumBy (fun product -> product.Price)
+        MessageBox.Show(sprintf "Your total is: $%.2f" total, "Checkout") |> ignore
+)
