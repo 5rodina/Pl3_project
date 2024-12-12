@@ -114,3 +114,12 @@ addToCartButton.Click.Add(fun _ ->
             updateTotal()
         | None -> ()
 )
+//function remove from cart button
+removeFromCartButton.Click.Add(fun _ ->
+    let selectedProduct = cartListBox.SelectedItem
+    if selectedProduct <> null then
+        let productName = selectedProduct.ToString()
+        cart <- List.filter (fun product -> product.Name <> productName) cart
+        cartListBox.Items.Remove(productName)
+        updateTotal()
+)
