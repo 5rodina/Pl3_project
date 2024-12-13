@@ -131,3 +131,9 @@ checkoutButton.Click.Add(fun _ ->
         let total = cart |> List.sumBy (fun product -> product.Price)
         MessageBox.Show(sprintf "Your total is: $%.2f" total, "Checkout") |> ignore
 )
+
+resetCartButton.Click.Add(fun _ ->
+    cart <- []
+    cartListBox.Items.Clear()
+    updateTotal()
+) 
