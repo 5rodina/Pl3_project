@@ -91,7 +91,7 @@ totalLabel.ForeColor <- Color.DarkGreen
 browseButton.Click.Add(fun _ ->
     productListBox.Items.Clear()
     productCatalog |> List.iter (fun product -> 
-        productListBox.Items.Add(sprintf "%s - $%.2f" product.Name product.Price) |> ignore)
+        productListBox.Items.Add(sprintf "%s - $%.2f - %s" product.Name product.Price product.Description) |> ignore)
 )
 
 let mutable cart = []
