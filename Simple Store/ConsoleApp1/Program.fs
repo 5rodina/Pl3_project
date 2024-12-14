@@ -137,3 +137,4 @@ resetCartButton.Click.Add(fun _ ->
     cartListBox.Items.Clear()
     updateTotal()
 ) 
+Application.Run(form)
